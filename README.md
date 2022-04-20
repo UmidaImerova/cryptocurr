@@ -13,7 +13,10 @@ Compulsory
 5. Write at least one component as a React class based component (the rest can be functional components).
 6. Develop in GitHub and record development through commits (use proper commit names). The projects that do not have commit history will not be counted.
 7. Host your code on Heroku.
+
+
 Optional
+
 1. Add a search field
 2. Use Material-UI as a component library.
 3. Add loading state
