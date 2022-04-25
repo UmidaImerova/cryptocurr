@@ -9,17 +9,17 @@ const Home = () => {
     <>
       <Grid container>
         <Grid item xs={9}>
-          <Typography className="home-title">
-            Top 10 cryptocurrencies
+          <Typography className="home-title" variant="h4">
+            Top cryptocurrencies
           </Typography>
         </Grid>
         <Grid item xs={3}>
-          <Typography className="show-more">
+          <Typography className="show-more" variant="h5">
             <Link to="/cryptocurrencies">Show more</Link>
           </Typography>
         </Grid>
-        <Cryptocurr/>
       </Grid>
+      <CryptoRating/>
       <Grid container>
         <Grid item xs={9}>
           <Typography className="home-title">Latest news</Typography>
@@ -29,7 +29,7 @@ const Home = () => {
             <Link to="/news">Show more</Link>
           </Typography>
         </Grid>
-        <CryptoRating/>
+        
       </Grid>
     </>
   );
