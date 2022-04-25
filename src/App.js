@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes ,Route } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import Navbar from './components/Navbar';
+import News from './components/News'
+import Exchange from './components/Exchange'
+import Home from './components/Home'
+
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <Grid container spacing={2}>
+     <Grid item xs={3}>
+        <div className='nav'>
+          <Navbar/>
+        </div>
+     </Grid>
+     <Grid item xs={9}>
+     <div className='main'>
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/exchange' element={<Exchange/>}/>
+      <Route path='/news' element={<News/>}/>
+    </Routes>
+</div>
+     </Grid>
+   </Grid>
   );
 }
 
 export default App;
+
