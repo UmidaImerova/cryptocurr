@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import News from './components/News'
 import Exchange from './components/Exchange'
 import Home from './components/Home'
+import Cryptocurr from './components/Cryptocurr';
 
 
 
@@ -22,6 +23,7 @@ function App() {
      <div className='main'>
     <Routes>
       <Route path='/' element={<Home/>}/>
+      <Route path='/cryptocurrencies' element={<Cryptocurr/>}/>
       <Route path='/exchange' element={<Exchange/>}/>
       <Route path='/news' element={<News/>}/>
     </Routes>

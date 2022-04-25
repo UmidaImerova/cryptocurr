@@ -31,7 +31,7 @@ const Navbar = () => {
               <CurrencyBitcoinIcon color="primary" />
             </ListItemIcon>
             <ListItemText>
-              <Link to ='/cryptocurr'>Cryptocurrencies</Link>
+              <Link to ='/cryptocurrencies'>Cryptocurrencies</Link>
             </ListItemText>
           </MenuItem>
           <MenuItem>
