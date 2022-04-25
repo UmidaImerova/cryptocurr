@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {Grid, Typography} from '@mui/material'
 import Cryptocurr from "./Cryptocurr";
+import CryptoRating from "./CryptoRating";
 
 const Home = () => {
   return (
@@ -28,6 +29,7 @@ const Home = () => {
             <Link to="/news">Show more</Link>
           </Typography>
         </Grid>
+        <CryptoRating/>
       </Grid>
     </>
   );

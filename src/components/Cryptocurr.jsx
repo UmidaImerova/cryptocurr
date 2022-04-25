@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { topCryptoAPI } from "../data/topCoinSlice";
+
+import { coinlistAPI } from "../data/coinSlice";
 
 import { Card, CardHeader,Avatar, CardContent, Grid, Typography } from "@mui/material";
 import millify from "millify";
@@ -11,30 +12,31 @@ const Cryptocurr = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
   useEffect(() => {
-    dispatch(topCryptoAPI());
+    dispatch(coinlistAPI());
   }, []);
-  console.log(data);
+  /* console.log('Cryptocurr',data) */;
 
   return (
-    <Grid container spacing={3}>
-      {data.topCrypto.map((currency) => (
+      <>
+        <Grid container spacing={3}>
+      {data.cryptocurr.map((currency) => (
         <>
           <Grid item xs={3}>
-            <Link to={`/crypto/${currency.currency_ID}`}>
-              <Card item sx={6} md={4} key={currency.currency_ID}>
+            <Link to={`/crypto/${currency.id}`}>
+              <Card item sx={6} md={4} key={currency.id}>
                 <CardHeader
-                  title={currency.fullname}
-                  avatar={<Avatar alt="coin img" src={currency.flag_image_32x32_flat} />}
+                  title={currency.name}
+                  avatar={<Avatar alt="coin img" src={currency.logo_url} />}
                 />
                 <CardContent>
                   <Typography variant="body2" color="text.secondary">
-                    USD Price:
+                    USD Price: {currency.inst_price_usd}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Market CAP: 
+                    Market CAP: {millify(currency.inst_market_cap_plain)}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Daily change:  %
+                    Daily change: {millify(currency.pair_change_percent_numeric)} %
                   </Typography>
                 </CardContent>
               </Card>
@@ -43,6 +45,7 @@ const Cryptocurr = () => {
         </>
       ))}
     </Grid>
+      </>
   );
 };
 
@@ -96,6 +99,36 @@ export default Cryptocurr;
         </>
       ))}
     </Grid> */
+
+
+/*     <Grid container spacing={3}>
+      {data.topCrypto.map((currency) => (
+        <>
+          <Grid item xs={3}>
+            <Link to={`/crypto/${currency.currency_ID}`}>
+              <Card item sx={6} md={4} key={currency.currency_ID}>
+                <CardHeader
+                  title={currency.fullname}
+                  avatar={<Avatar alt="coin img" src={currency.flag_image_32x32_flat} />}
+                />
+                <CardContent>
+                  <Typography variant="body2" color="text.secondary">
+                    USD Price:
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Market CAP: 
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Daily change:  %
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Link>
+          </Grid>
+        </>
+      ))}
+    </Grid> */
+
 
 /* function Home(){
   const dispatch = useDispatch()
