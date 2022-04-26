@@ -22,10 +22,10 @@ const Home = () => {
       <CryptoRating/>
       <Grid container>
         <Grid item xs={9}>
-          <Typography className="home-title">Latest news</Typography>
+          <Typography className="home-title " variant="h4">Latest news</Typography>
         </Grid>
         <Grid item xs={3}>
-          <Typography className="show-more">
+          <Typography className="show-more" variant="h5">
             <Link to="/news">Show more</Link>
           </Typography>
         </Grid>

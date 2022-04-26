@@ -21,21 +21,14 @@ const News = () => {
       {data.news.map((item) => (
         <>
           <Grid item xs={3}>
+            <a href={item.third_party_url} target='_blank'>
               <Card item sx={6} md={4} key={item.news_ID}>
-                <Link to=''>
                   <CardHeader
                   title={item.HEADLINE}
                   avatar={<Avatar alt="news img" src={item.related_image} />}
                 />
-                </Link>
-                <CardContent>
-                  
-                    {item.BODY>100
-                      ? `${item.BODY.substring(0, 100)}...`
-                      : item.BODY}
-                  
-                </CardContent>
               </Card>
+              </a> 
           </Grid>
         </>
       ))}
