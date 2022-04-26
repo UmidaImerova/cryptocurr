@@ -22,12 +22,14 @@ import { Link } from "react-router-dom";
 const Cryptocurr = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [cardPerPage] = useState(10);
+  const [loading, setLoading] = useState(true)
 
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state);
   useEffect(() => {
    dispatch(coinlistAPI());
+   setLoading(false)
     
   }, [dispatch]);
   
@@ -39,6 +41,12 @@ const currentCards = data.cryptocurr.slice(indexOfFirst, indexOfLast)
 //change page
 const paginate = (pageQqt)=>setCurrentPage(pageQqt)
 
+
+if (loading){
+  return (
+    <h1>Loading...</h1>
+  )
+}
   return (
     <>
       <div className="serch-input">
