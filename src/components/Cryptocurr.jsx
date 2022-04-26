@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PageCounter from "./Pagination";
 
 import { coinlistAPI } from "../data/coinSlice";
 
@@ -13,34 +14,30 @@ import {
   Typography,
   TextField,
   InputAdornment,
-  Pagination
 } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import millify from "millify";
 import { Link } from "react-router-dom";
 
 const Cryptocurr = () => {
-  const [cryptos, setCryptos] = useState();
-  const [searchCurr, setSearchCurr] = useState('')
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardPerPage] = useState(10);
 
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state);
   useEffect(() => {
-    setCryptos(dispatch(coinlistAPI()));
-    setCryptos(data.cryptocurr)
-  }, []);
-  
- /*  useEffect(() => {
-   const filteredCurr = data.cryptocurr?.filter(()=> data.cryptocurr.name.toLowerCase().includes(searchCurr.toLowerCase()))
+   dispatch(coinlistAPI());
+    
+  }, [dispatch]);
   
 
-  }, [searchCurr]) */
-
-  
- 
-
- 
+//pagination logic
+const indexOfLast = currentPage * cardPerPage;
+const indexOfFirst = indexOfLast - cardPerPage;
+const currentCards = data.cryptocurr.slice(indexOfFirst, indexOfLast)
+//change page
+const paginate = (pageQqt)=>setCurrentPage(pageQqt)
 
   return (
     <>
@@ -56,12 +53,12 @@ const Cryptocurr = () => {
             </InputAdornment>
           ),
         }}
-        onChange = {(e)=>setSearchCurr(e.target.value)}
+        /* onChange = {(e)=>setSearchCurr(e.target.value)} */
       />
       </div>
       <Grid container spacing={3}>
 
-        {data.cryptocurr.map((currency) => (
+        {currentCards.map((currency) => (
           <Grid item xs={3}>
             <Link to={`/crypto/${currency.id}`}>
               <Card item sx={6} md={4} key={currency.id}>
@@ -86,7 +83,7 @@ const Cryptocurr = () => {
           </Grid>
         ))}
       </Grid>
-      <Pagination count={10} shape="rounded" />
+      <PageCounter cardPerPage={cardPerPage} totalCard={data.cryptocurr.length} paginate={paginate}/>
 
     </>
   );
