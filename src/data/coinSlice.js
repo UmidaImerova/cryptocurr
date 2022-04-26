@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "axios";
 
 
-const options = {
+const option = {
     method: 'GET',
     url: 'https://investing-cryptocurrency-markets.p.rapidapi.com/coins/list',
     params: {
@@ -18,8 +18,8 @@ const options = {
     }
   };
 
-  export const coinlistAPI = createAsyncThunk('api/news',async(obj,{state,error})=>{
-    const req = await axios.request(options)
+  export const coinlistAPI = createAsyncThunk('api/coinlist',async(obj,{state,error})=>{
+    const req = await axios.request(option)
     return req.data.data[0].screen_data.crypto_data;
   })
 

@@ -14,7 +14,7 @@ const Cryptocurr = () => {
   useEffect(() => {
     dispatch(coinlistAPI());
   }, []);
-  /* console.log('Cryptocurr',data) */;
+
 
   return (
       <>
