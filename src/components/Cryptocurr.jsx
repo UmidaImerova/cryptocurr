@@ -1,26 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { coinlistAPI } from "../data/coinSlice";
 
-import { Card, CardHeader,Avatar, CardContent, Grid, Typography } from "@mui/material";
+import {
+  Card,
+  CardHeader,
+  Avatar,
+  CardContent,
+  Grid,
+  Typography,
+  TextField,
+  InputAdornment,
+  Pagination
+} from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 import millify from "millify";
 import { Link } from "react-router-dom";
 
 const Cryptocurr = () => {
+  const [cryptos, setCryptos] = useState();
+  const [searchCurr, setSearchCurr] = useState('')
+
   const dispatch = useDispatch();
+
   const data = useSelector((state) => state);
   useEffect(() => {
-    dispatch(coinlistAPI());
+    setCryptos(dispatch(coinlistAPI()));
+    setCryptos(data.cryptocurr)
   }, []);
+  
+ /*  useEffect(() => {
+   const filteredCurr = data.cryptocurr?.filter(()=> data.cryptocurr.name.toLowerCase().includes(searchCurr.toLowerCase()))
+  
 
+  }, [searchCurr]) */
+
+  
+ 
+
+ 
 
   return (
-      <>
-        <Grid container spacing={3}>
-      {data.cryptocurr.map((currency) => (
-        <>
+    <>
+      <div className="serch-input">
+        <TextField
+        id="outlined-basic"
+        variant="outlined"
+        label="Search..."
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <SearchIcon/>
+            </InputAdornment>
+          ),
+        }}
+        onChange = {(e)=>setSearchCurr(e.target.value)}
+      />
+      </div>
+      <Grid container spacing={3}>
+
+        {data.cryptocurr.map((currency) => (
           <Grid item xs={3}>
             <Link to={`/crypto/${currency.id}`}>
               <Card item sx={6} md={4} key={currency.id}>
@@ -36,16 +77,18 @@ const Cryptocurr = () => {
                     Market CAP: {millify(currency.inst_market_cap_plain)}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Daily change: {millify(currency.pair_change_percent_numeric)} %
+                    Daily change:{" "}
+                    {millify(currency.pair_change_percent_numeric)} %
                   </Typography>
                 </CardContent>
               </Card>
             </Link>
           </Grid>
-        </>
-      ))}
-    </Grid>
-      </>
+        ))}
+      </Grid>
+      <Pagination count={10} shape="rounded" />
+
+    </>
   );
 };
 
@@ -100,7 +143,6 @@ export default Cryptocurr;
       ))}
     </Grid> */
 
-
 /*     <Grid container spacing={3}>
       {data.topCrypto.map((currency) => (
         <>
@@ -128,7 +170,6 @@ export default Cryptocurr;
         </>
       ))}
     </Grid> */
-
 
 /* function Home(){
   const dispatch = useDispatch()

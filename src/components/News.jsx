@@ -2,9 +2,9 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getNewsAPI } from '../data/newsSlice'
-import {Link} from 'react-router-dom'
 
-import {Grid, Card, CardHeader, CardContent, Typography, Avatar} from '@mui/material'
+
+import {Grid, Card, CardHeader, Avatar} from '@mui/material'
 
 const News = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,6 @@ const News = () => {
   useEffect(() => {
     dispatch(getNewsAPI());
   }, []);
-  console.log(data.news);
   
   return (
     <>
