@@ -1,4 +1,5 @@
 import React from "react";
+import Statistic from './Statistic'
 import { Link } from "react-router-dom";
 import {Grid, Typography} from '@mui/material'
 import News from "./News";
@@ -7,7 +8,15 @@ import CryptoRating from "./CryptoRating";
 const Home = () => {
   return (
     <>
-      <Grid container>
+      <Statistic/>
+    </>
+  );
+};
+
+export default Home;
+
+
+/*       <Grid container>
         <Grid item xs={9}>
           <Typography className="home-title" variant="h4">
             Top cryptocurrencies
@@ -30,9 +39,4 @@ const Home = () => {
           </Typography>
         </Grid>
         <News/>
-      </Grid>
-    </>
-  );
-};
-
-export default Home;
+      </Grid> */
