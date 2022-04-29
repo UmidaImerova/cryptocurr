@@ -24,7 +24,7 @@ const options = {
   })
 
   const dataSlice = createSlice({
-      name:'statistic',
+      name:'cryptocurr',
       initialState:[],
       reducer:{},
       extraReducers:{

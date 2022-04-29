@@ -4,7 +4,7 @@ import { Pagination } from '@mui/material';
 const PageCounter = ({cardPerPage, totalCard, paginate}) => {
 
     const pageNum = [];
-for (let index = 1; index < Math.ceil(totalCard/cardPerPage); index++) {
+for (let index = 0; index < Math.round(totalCard/cardPerPage); index++) {
     pageNum.push(index)
    
 }

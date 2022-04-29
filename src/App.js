@@ -3,7 +3,6 @@ import { Routes ,Route } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Navbar from './components/Navbar';
 import News from './components/News'
-import Exchange from './components/Exchange'
 import Home from './components/Home'
 import Cryptocurr from './components/Cryptocurr';
 
@@ -20,14 +19,13 @@ function App() {
         </div>
      </Grid>
      <Grid item xs={9}>
-     <div className='main'>
-    <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/cryptocurrencies' element={<Cryptocurr/>}/>
-      <Route path='/exchange' element={<Exchange/>}/>
-      <Route path='/news' element={<News/>}/>
-    </Routes>
-</div>
+      <div className='main'>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/cryptocurrencies' element={<Cryptocurr/>}/>
+          <Route path='/news' element={<News/>}/>
+        </Routes>
+      </div>
      </Grid>
    </Grid>
   );
@@ -35,3 +33,12 @@ function App() {
 
 export default App;
 
+/*      <Grid item xs={9}>
+      <div className='main'>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/cryptocurrencies' element={<Cryptocurr/>}/>
+          <Route path='/news' element={<News/>}/>
+        </Routes>
+      </div>
+     </Grid> */

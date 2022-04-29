@@ -3,6 +3,10 @@
     grid-template-columns: 2fr ;
 }
 
+.component-title{
+    font-size: 4rem;
+}
+
 .nav-container{
     background-color: aqua;
     
